@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 import PublicLayout from './layouts/PublicLayout';
@@ -15,10 +16,13 @@ import MyListings from './pages/MyListings';
 import MyBookings from './pages/MyBookings';
 import NotFound from './pages/NotFound';
 
+const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || '';
+
 function App() {
   return (
     <BrowserRouter>
       <ThemeProvider>
+        <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
         <AuthProvider>
           <Toaster position="top-right" toastOptions={{
             className: 'dark:bg-gray-800 dark:text-white',
@@ -39,6 +43,7 @@ function App() {
             </Route>
           </Routes>
         </AuthProvider>
+        </GoogleOAuthProvider>
       </ThemeProvider>
     </BrowserRouter>
   );
