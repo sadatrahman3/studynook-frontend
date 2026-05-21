@@ -2,7 +2,7 @@
 
 A full-stack web application where students and library users can list and book study rooms. Built with React, Node.js, Express, and MongoDB.
 
-🌐 **Live Site URL**: [https://studynook.vercel.app](https://studynook.vercel.app)
+🌐 **Live Site URL**: [https://studynook-frontend.vercel.app](https://studynook-frontend.vercel.app)
 
 ## Features
 
