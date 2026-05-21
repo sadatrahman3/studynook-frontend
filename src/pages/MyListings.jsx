@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FiEdit2, FiTrash2 } from 'react-icons/fi';
 import API from '../api/axios';
+import { useAuth } from '../context/AuthContext';
 import LoadingSpinner from '../components/LoadingSpinner';
 import toast from 'react-hot-toast';
 
 const MyListings = () => {
+  const { user } = useAuth();
   const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState(true);
   const [deleteTarget, setDeleteTarget] = useState(null);
@@ -18,7 +20,7 @@ const MyListings = () => {
 
   const fetchRooms = async () => {
     try {
-      const { data } = await API.get('/rooms');
+      const { data } = await API.get(`/rooms?owner=${user.id}`);
       setRooms(data);
     } catch {
       toast.error('Failed to load rooms');

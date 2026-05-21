@@ -22,9 +22,11 @@ const Register = () => {
 
   const validate = () => {
     const errs = {};
-    if (form.password.length < 6) errs.password = 'At least 6 characters';
-    if (!/[A-Z]/.test(form.password)) errs.password = 'Need one uppercase letter';
-    if (!/[a-z]/.test(form.password)) errs.password = 'Need one lowercase letter';
+    const pwErrors = [];
+    if (form.password.length < 6) pwErrors.push('At least 6 characters');
+    if (!/[A-Z]/.test(form.password)) pwErrors.push('Need one uppercase letter');
+    if (!/[a-z]/.test(form.password)) pwErrors.push('Need one lowercase letter');
+    if (pwErrors.length) errs.password = pwErrors.join(', ');
     if (!form.name.trim()) errs.name = 'Name is required';
     if (!form.email.trim()) errs.email = 'Email is required';
     if (!form.photo.trim()) errs.photo = 'Photo URL is required';

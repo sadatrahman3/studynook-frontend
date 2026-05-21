@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import { GoogleLogin } from '@react-oauth/google';
+import toast from 'react-hot-toast';
 
 const Login = () => {
   const { login, googleLogin, user } = useAuth();
